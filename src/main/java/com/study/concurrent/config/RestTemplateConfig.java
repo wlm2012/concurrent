@@ -19,9 +19,9 @@ import java.util.concurrent.TimeUnit;
 public class RestTemplateConfig {
 
 
-    private static final int HTTP_MAX_IDLE = 20;
+    private static final int HTTP_MAX_IDLE = 100;
     private static final int HTTP_KEEP_ALIVE = 20;
-    private static final int HTTP_TIMEOUT = 30;
+    private static final int HTTP_TIMEOUT = 60;
     private static final int HTTP_CONNECTION_TIMEOUT = 30;
 
     @Bean

@@ -1,6 +1,8 @@
 package com.study.concurrent.application.service;
 
+import java.util.concurrent.CompletableFuture;
+
 public interface SaveService<T, U> {
 
-    void save(T t, U u);
+    CompletableFuture<Void> save(T t, U u);
 }
