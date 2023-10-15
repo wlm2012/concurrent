@@ -14,6 +14,12 @@ public class CompletableFutureTest {
     @Test
     void test() {
 
+        Thread thread = new Thread(() -> {
+            System.out.println("1");
+        });
+        thread.start();
+
+
         long start = System.currentTimeMillis();
 
         CompletableFuture<Integer> completableFuture = CompletableFuture.supplyAsync(() -> {
