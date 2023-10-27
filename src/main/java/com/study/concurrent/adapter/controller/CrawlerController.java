@@ -9,9 +9,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 @Slf4j
@@ -20,36 +20,36 @@ import java.util.concurrent.CompletableFuture;
 public class CrawlerController {
 
 
-    private final Map<String, QueryService<String, String>> queryServiceMap;
+    private final QueryService<String, String> dongManHiQueryServiceImpl;
 
-    private final Map<String, ResolveService<List<String>, String>> resolveServiceMap;
+    private final ResolveService<List<String>, String> dongManHiResolveServiceImpl;
 
-    private final Map<String, SaveService<String, String>> saveServiceMap;
+    private final SaveService<String, String> dongManHiSaveServiceImpl;
 
     private final DongManHiSaveServiceImpl dongManHiSaveService;
 
 
     @PostMapping("/crawler")
     public void crawler(String url, String path) {
-        QueryService<String, String> queryService = queryServiceMap.get("dongManHiQueryServiceImpl");
-        ResolveService<List<String>, String> resolveService = resolveServiceMap.get("dongManHiResolveServiceImpl");
-        SaveService<String, String> saveService = saveServiceMap.get("dongManHiSaveServiceImpl");
 
-        String query = queryService.query(url);
-        List<String> resolve = resolveService.resolve(query);
+        for (int i = 83837; i < 83874; i++) {
+            String query = dongManHiQueryServiceImpl.query(url + "/" + i + ".html");
+            List<String> resolve = dongManHiResolveServiceImpl.resolve(query);
 
-        ArrayList<CompletableFuture<Void>> completableFutures = new ArrayList<>();
-        for (String s : resolve) {
-            completableFutures.add(saveService.save(s, path));
+            ArrayList<CompletableFuture<Void>> completableFutures = new ArrayList<>();
+            for (String s : resolve) {
+                completableFutures.add(dongManHiSaveServiceImpl.save(s, path + File.separator + (i - 83805)));
+            }
+
+            CompletableFuture<Void> future = CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new));
+
+            future.exceptionally(e -> {
+                log.error("wrong", e);
+                return null;
+            }).join();
+            log.info("finish");
         }
 
-        CompletableFuture<Void> future = CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new));
-
-        future.exceptionally(e -> {
-            log.error("wrong", e);
-            return null;
-        }).join();
-        log.info("finish");
 
     }
 

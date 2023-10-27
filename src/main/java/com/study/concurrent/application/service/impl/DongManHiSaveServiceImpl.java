@@ -29,6 +29,12 @@ public class DongManHiSaveServiceImpl implements SaveService<String, String> {
     @Override
     public CompletableFuture<Void> save(final String url, final String path) {
 
+        log.info("path:{}", path);
+        File directory = new File(path);
+        if (!directory.exists()) {
+            directory.mkdir();
+        }
+
         String name = url.substring(url.lastIndexOf("/"));
         log.info("start:{}", name);
         log.info(Thread.currentThread().toString());
@@ -64,7 +70,7 @@ public class DongManHiSaveServiceImpl implements SaveService<String, String> {
 
     private static HttpEntity<Object> getHttpEntity(final String path) {
         File fold = new File(path);
-        if (!fold.exists()){
+        if (!fold.exists()) {
             fold.mkdir();
         }
 
