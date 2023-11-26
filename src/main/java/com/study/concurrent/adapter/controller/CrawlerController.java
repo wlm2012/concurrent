@@ -32,23 +32,22 @@ public class CrawlerController {
     @PostMapping("/crawler")
     public void crawler(String url, String path) {
 
+        ArrayList<CompletableFuture<Void>> completableFutures = new ArrayList<>();
         for (int i = 83837; i < 83874; i++) {
             String query = dongManHiQueryServiceImpl.query(url + "/" + i + ".html");
             List<String> resolve = dongManHiResolveServiceImpl.resolve(query);
 
-            ArrayList<CompletableFuture<Void>> completableFutures = new ArrayList<>();
             for (String s : resolve) {
                 completableFutures.add(dongManHiSaveServiceImpl.save(s, path + File.separator + (i - 83805)));
             }
-
-            CompletableFuture<Void> future = CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new));
-
-            future.exceptionally(e -> {
-                log.error("wrong", e);
-                return null;
-            }).join();
-            log.info("finish");
         }
+        CompletableFuture<Void> future = CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new));
+
+        future.exceptionally(e -> {
+            log.error("wrong", e);
+            return null;
+        }).join();
+        log.info("finish");
 
 
     }

@@ -32,7 +32,7 @@ public class DongManHiSaveServiceImpl implements SaveService<String, String> {
         log.info("path:{}", path);
         File directory = new File(path);
         if (!directory.exists()) {
-            directory.mkdir();
+            directory.mkdirs();
         }
 
         String name = url.substring(url.lastIndexOf("/"));
@@ -45,7 +45,7 @@ public class DongManHiSaveServiceImpl implements SaveService<String, String> {
             return CompletableFuture.completedFuture(null);
         }
 
-        HttpEntity<Object> httpEntity = getHttpEntity(path);
+        HttpEntity<Object> httpEntity = getHttpHeaders();
         ResponseEntity<byte[]> entity = httpRestTemplate.exchange(url, HttpMethod.GET, httpEntity, byte[].class);
         if (entity.getStatusCode().isError()) {
             throw new ServiceException("save wrong");
@@ -68,11 +68,7 @@ public class DongManHiSaveServiceImpl implements SaveService<String, String> {
         return CompletableFuture.completedFuture(null);
     }
 
-    private static HttpEntity<Object> getHttpEntity(final String path) {
-        File fold = new File(path);
-        if (!fold.exists()) {
-            fold.mkdir();
-        }
+    private static HttpEntity<Object> getHttpHeaders() {
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Referer", "https://www.dongmanhi.com/");
