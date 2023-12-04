@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.LongAdder;
 
 @Slf4j
 public class CompletableFutureTest {
@@ -45,6 +46,10 @@ public class CompletableFutureTest {
 
         log.info("结束：{}", System.currentTimeMillis() - start);
 
+    }
+
+    private void test1() {
+        LongAdder longAdder = new LongAdder();
     }
 
 
