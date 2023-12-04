@@ -24,7 +24,7 @@ public class EbookController {
         log.info(Thread.currentThread().isVirtual() + Thread.currentThread().getName());
         log.info(Thread.currentThread().toString());
 
-        ebookService.asyncFindByIds(idsDO.getIds());
+        ebookService.asyncFindByIds();
         return ebookService.findByIds(idsDO.getIds());
     }
 }

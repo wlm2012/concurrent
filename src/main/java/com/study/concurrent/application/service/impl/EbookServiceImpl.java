@@ -8,7 +8,6 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 @Service
 @Slf4j
@@ -23,10 +22,9 @@ public class EbookServiceImpl {
     }
 
     @Async
-    public CompletableFuture<List<EbookPO>> asyncFindByIds(List<Long> ids) {
+    public void asyncFindByIds() {
         log.info(Thread.currentThread().isVirtual() + Thread.currentThread().getName());
         log.info(Thread.currentThread().toString());
-        return CompletableFuture.completedFuture(ebookRepository.findByIds(ids));
     }
 
 }
