@@ -18,6 +18,8 @@ public class EbookServiceImpl {
 
 
     public List<EbookPO> findByIds(List<Long> ids) {
+        List<EbookPO> ebookPOS = ebookRepository.likeBooks("ally Lehne");
+        System.out.println(ebookPOS.getFirst().getName());
         return ebookRepository.findByIds(ids);
     }
 
