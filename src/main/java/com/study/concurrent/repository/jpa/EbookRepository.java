@@ -14,4 +14,9 @@ public interface EbookRepository extends JpaRepository<EbookPO, Long> {
             select e from EbookPO e where
             (e.id in :ids or :ids is null)""")
     List<EbookPO> findByIds(List<Long> ids);
+
+    @Query(value = """
+            select e from EbookPO e where e.name like %:name%""")
+    List<EbookPO> likeBooks(String name);
+
 }
