@@ -1,0 +1,12 @@
+allprojects {
+    repositories {
+        mavenLocal()
+        maven { name "Alibaba" ; url "https://maven.aliyun.com/repository/public" }
+    }
+
+    buildscript { 
+        repositories { 
+            maven { name "Alibaba" ; url 'https://maven.aliyun.com/repository/public' }
+        }
+    }
+}
