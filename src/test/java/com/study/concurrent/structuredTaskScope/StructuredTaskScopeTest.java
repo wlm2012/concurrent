@@ -3,7 +3,6 @@ package com.study.concurrent.structuredTaskScope;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
-import java.util.concurrent.StructuredTaskScope;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
@@ -11,7 +10,7 @@ public class StructuredTaskScopeTest {
 
     @Test
     void test() {
-        try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
+/*        try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
             long start = System.currentTimeMillis();
             StructuredTaskScope.Subtask<Integer> fork3 = scope.fork(this::fork3);
             StructuredTaskScope.Subtask<Integer> fork1 = scope.fork(this::fork1);
@@ -23,7 +22,7 @@ public class StructuredTaskScopeTest {
 //            log.info(fork2.get());
         } catch (Exception e) {
             log.error("Exception:", e);
-        }
+        }*/
     }
 
     private Integer fork1() {

@@ -1,5 +1,9 @@
 spring:
   datasource:
-    url: jdbc:mariadb://localhost:3306/study?serverTimezone=Etc/GMT-8
-    username: root
-    password: 123456
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 2
+    url: ENC(Oh1EE7gh42481dRiZvGPpc0j55IpNVFCgeMLWG2EQcu5zQb15HmkbnAW2s4mc5koZJLrzpVL+o+6slAw0u2dOewi53kz2i96b62OFJyHZfD0Jc0QRac2pvFOAM+Z8hpkk5sNcZof59rkX3jO6s8hEw==)
+    username: ENC(1pCCP2UyfJPpcfyX6BcCa+kiJ6AP/l1Ao9oWhhhVg4rLBK9WECC4DvdjzYtfXevD)
+    password: ENC(L2jR+SWheMKxy/s0rNWNYFz+hdogVxUZ6/mi1eYGyLSh0MXoybzMDlsJrVMt7p7IyzgkC8jF+RMJFPJ1YW2/CA==)
+    driver-class-name: org.mariadb.jdbc.Driver

@@ -3,7 +3,8 @@ spring:
     hikari:
       minimum-idle: 2
       maximum-pool-size: 2
-    url: jdbc:postgresql://47.102.127.65:5433/dbc3336ece630249b090faa5fb78f9bb30study
-    username: postgre
-    password: HgmUXNXiKZp4NBj
+    url: ENC(EOKHZqkx7CnYC1T+sLI+T71Y87wLIGz/G7yIrua+evXmBEGw4r/LbxptdFQeW8Ckg8f/4wEgtAFFm9FlStdiMqzSRaFvMn8AqFTD7fcdYNRWWQcIviTGqd1TghTU6971rn3vrZI/UcwuktlK+WaEKg==)
+    username: ENC(f+UztJwxp1WJdSFRtE5HyHeE/4wxv3pUXPwmqbjWaB+u2h8ZvOwp1C5Q8hX66dp+)
+    password: ENC(JfGO2t5etZQgZsv/vTLTTJIvjwSdGbAQQU0maVWqJuufFmyM0EChESTmoKfvcGTi)
+    driver-class-name: org.postgresql.Driver
 

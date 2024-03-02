@@ -3,7 +3,7 @@ spring:
     virtual:
       enabled: true
   profiles:
-    active: postgresql
+    active: mysql
   jpa:
     show-sql: true
     hibernate:
@@ -14,3 +14,11 @@ spring:
 
 server:
   port: 9904
+
+
+jasypt:
+  encryptor:
+    # 加密的盐值，为了安全，该配置可以放在启动参数或者命令行参数中
+    password: fa7bd4edd42448aea8c9484fbce6e8cd
+    # 加密所采用的算法
+    algorithm: PBEWITHHMACSHA512ANDAES_256
