@@ -16,7 +16,7 @@ public class EbookPO {
 
     @Id
     @Comment("主键")
-    @GeneratedValue(strategy=GenerationType.TABLE, generator="id_gen")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "id_gen")
     private Long id;
 
     @Comment("编号")

@@ -39,6 +39,8 @@ dependencies {
     implementation("org.jsoup:jsoup:1.17.2")
     implementation("org.apache.httpcomponents.client5:httpclient5:5.3")
     implementation("com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5")
+    implementation("org.jooq:jool:0.9.15")
+
 
     testCompileOnly("org.projectlombok:lombok:1.18.30")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.30")
