@@ -1,8 +1,12 @@
 package com.study.concurrent.jpa;
 
 import com.study.concurrent.domain.entity.ActorEntity;
+import com.study.concurrent.domain.entity.AuthorEntity;
+import com.study.concurrent.domain.entity.EbookEntity;
 import com.study.concurrent.domain.entity.ResourcesEntity;
 import com.study.concurrent.domain.repository.ActorRepository;
+import com.study.concurrent.domain.repository.AuthorRepository;
+import com.study.concurrent.domain.repository.EbookRepository;
 import com.study.concurrent.domain.repository.ResourcesRepository;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -22,6 +27,12 @@ public class JpaTest {
 
     @Resource
     private ResourcesRepository resourcesRepository;
+
+    @Resource
+    private EbookRepository ebookRepository;
+
+    @Resource
+    private AuthorRepository authorRepository;
 
 
     /**
@@ -122,5 +133,41 @@ public class JpaTest {
             log.info("ResourcesSet().size" + actorEntity.getResourcesSet().size());
         }
 
+    }
+
+
+    @Test
+    @Transactional
+    void query_ebook_test() {
+        Optional<EbookEntity> ebookEntityOptional = ebookRepository.findById(1L);
+        if (ebookEntityOptional.isPresent()) {
+            EbookEntity ebookEntity = ebookEntityOptional.get();
+            log.info("ebookEntity" + ebookEntity);
+            log.info("------------------------------------");
+            log.info("AuthorEntity" + ebookEntity.getAuthorEntity());
+        }
+    }
+
+
+    @Test
+    @Transactional
+    void query_author_test() {
+        Optional<AuthorEntity> authorEntityOptional = authorRepository.findById(1L);
+        if (authorEntityOptional.isPresent()) {
+            AuthorEntity authorEntity = authorEntityOptional.get();
+            log.info("authorEntity" + authorEntity);
+            log.info("------------------------------------");
+            log.info("EbookEntitySet" + authorEntity.getEbookEntitySet());
+        }
+    }
+
+    @Test
+    @Transactional
+    void query_author_all_test() {
+        List<AuthorEntity> all = authorRepository.findAll();
+
+        for (AuthorEntity authorEntity : all) {
+            log.info("EbookEntitySet" + authorEntity.getEbookEntitySet());
+        }
     }
 }

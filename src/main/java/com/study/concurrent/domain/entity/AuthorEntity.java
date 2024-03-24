@@ -2,18 +2,20 @@ package com.study.concurrent.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Comment;
 
+import java.util.Set;
+
 @Entity
-@Table(name = "ebook")
-@Comment("电子书表")
+@Table(name = "author")
+@Comment("作者")
 @Getter
 @Setter
-@Builder
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class EbookEntity {
+public class AuthorEntity {
 
     @Id
     @Setter(AccessLevel.NONE)
@@ -22,15 +24,12 @@ public class EbookEntity {
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "id_gen")
     private Long id;
 
-    @Comment("编号")
-    @Column
     private String code;
 
-    @Comment("书名")
-    private String name;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "author_id", foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
+    @OneToMany(mappedBy = "authorEntity")
     @ToString.Exclude
-    private AuthorEntity authorEntity;
+    @BatchSize(size = 25)
+    private Set<EbookEntity> ebookEntitySet;
+
+
 }
