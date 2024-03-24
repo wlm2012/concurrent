@@ -5,11 +5,15 @@ import com.study.concurrent.domain.entity.ResourcesEntity;
 import com.study.concurrent.domain.repository.ActorRepository;
 import com.study.concurrent.domain.repository.ResourcesRepository;
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.Optional;
 
+@Slf4j
 @SpringBootTest
 public class JpaTest {
 
@@ -50,10 +54,10 @@ public class JpaTest {
     @Test
     void save_two() {
         ResourcesEntity resourcesEntity = new ResourcesEntity();
-        resourcesEntity.setName("ipz2");
+        resourcesEntity.setName("ipz9");
 
         ActorEntity actorEntity = new ActorEntity();
-        actorEntity.setName("cang2");
+        actorEntity.setName("cang9");
 
         // 如果没有这一步，则会报错，因为没有 actor 的数据，但 actor_resources 会保存数据
         actorRepository.save(actorEntity);
@@ -108,7 +112,15 @@ public class JpaTest {
 
 
     @Test
+    @Transactional
     void query_test() {
-//        actorRepository.
+        Optional<ActorEntity> actorEntityOptional = actorRepository.findById(802L);
+        if (actorEntityOptional.isPresent()) {
+            ActorEntity actorEntity = actorEntityOptional.get();
+            log.info("actorEntity" + actorEntity);
+            log.info("----------------------------------");
+            log.info("ResourcesSet().size" + actorEntity.getResourcesSet().size());
+        }
+
     }
 }
