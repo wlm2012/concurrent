@@ -46,6 +46,7 @@ public class ResourcesEntity {
             joinColumns = @JoinColumn(name = "actor_id"),
             inverseJoinColumns = @JoinColumn(name = "resources_id")
     )
+    @ToString.Exclude
     private Set<ActorEntity> actorSet;
 
 }

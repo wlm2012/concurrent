@@ -59,6 +59,7 @@ public class ActorEntity {
     @ManyToMany(mappedBy = "actorSet"
 //            , cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}
     )
+    @ToString.Exclude
     private Set<ResourcesEntity> resourcesSet;
 
 }
