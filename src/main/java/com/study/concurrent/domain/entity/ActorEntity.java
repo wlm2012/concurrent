@@ -52,9 +52,13 @@ public class ActorEntity {
     private int exist;
 
     @Comment("照片")
+    @Lob
+    @Column(length = 160000)
     private byte[] photo;
 
-    @ManyToMany(mappedBy = "actorSet")
+    @ManyToMany(mappedBy = "actorSet"
+//            , cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}
+    )
     private Set<ResourcesEntity> resourcesSet;
 
 }

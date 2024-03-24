@@ -28,7 +28,6 @@ public class ResourcesEntity {
 
 
     @Comment("资源名称")
-    @Column(length = 1)
     private String name;
 
     @Comment("路径")
@@ -39,7 +38,9 @@ public class ResourcesEntity {
     @Column(length = 1)
     private int exist;
 
-    @ManyToMany
+    @ManyToMany(
+//            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}
+    )
     @JoinTable(
             name = "actor_resources",
             joinColumns = @JoinColumn(name = "actor_id"),
