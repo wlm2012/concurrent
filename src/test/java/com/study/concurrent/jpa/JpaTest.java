@@ -29,6 +29,7 @@ public class JpaTest {
         ResourcesEntity resourcesEntity = new ResourcesEntity();
         resourcesEntity.setName("ipz");
 
+        // 如果没有这一步，则无法保存 resources
         resourcesRepository.save(resourcesEntity);
 
         ActorEntity actorEntity = new ActorEntity();
@@ -54,6 +55,7 @@ public class JpaTest {
         ActorEntity actorEntity = new ActorEntity();
         actorEntity.setName("cang2");
 
+        // 如果没有这一步，则会报错，因为没有 actor 的数据，但 actor_resources 会保存数据
         actorRepository.save(actorEntity);
 
         HashSet<ActorEntity> actorEntities = new HashSet<>();
