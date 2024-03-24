@@ -1,4 +1,4 @@
-package com.study.concurrent.repository.po;
+package com.study.concurrent.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,7 +12,7 @@ import org.hibernate.annotations.Comment;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class EbookPO {
+public class EbookEntity {
 
     @Id
     @Comment("主键")
@@ -20,6 +20,7 @@ public class EbookPO {
     private Long id;
 
     @Comment("编号")
+    @Column
     private String code;
 
     @Comment("书名")

@@ -1,7 +1,7 @@
 package com.study.concurrent.application.service.impl;
 
-import com.study.concurrent.repository.jpa.EbookRepository;
-import com.study.concurrent.repository.po.EbookPO;
+import com.study.concurrent.domain.repository.EbookRepository;
+import com.study.concurrent.domain.entity.EbookEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
@@ -17,9 +17,9 @@ public class EbookServiceImpl {
     private final EbookRepository ebookRepository;
 
 
-    public List<EbookPO> findByIds(List<Long> ids) {
-        List<EbookPO> ebookPOS = ebookRepository.likeBooks("ally Lehne");
-        System.out.println(ebookPOS.getFirst().getName());
+    public List<EbookEntity> findByIds(List<Long> ids) {
+        List<EbookEntity> ebookEntities = ebookRepository.likeBooks("ally Lehne");
+        System.out.println(ebookEntities.getFirst().getName());
         return ebookRepository.findByIds(ids);
     }
 

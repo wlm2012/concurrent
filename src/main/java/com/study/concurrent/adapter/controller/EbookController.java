@@ -2,7 +2,7 @@ package com.study.concurrent.adapter.controller;
 
 import com.study.concurrent.adapter.dto.IdsDO;
 import com.study.concurrent.application.service.impl.EbookServiceImpl;
-import com.study.concurrent.repository.po.EbookPO;
+import com.study.concurrent.domain.entity.EbookEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +20,7 @@ public class EbookController {
     private final EbookServiceImpl ebookService;
 
     @GetMapping("/findByIds")
-    public List<EbookPO> findByIds(IdsDO idsDO) {
+    public List<EbookEntity> findByIds(IdsDO idsDO) {
         log.info(Thread.currentThread().isVirtual() + Thread.currentThread().getName());
         log.info(Thread.currentThread().toString());
 
