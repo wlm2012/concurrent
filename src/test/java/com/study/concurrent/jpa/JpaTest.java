@@ -67,7 +67,7 @@ public class JpaTest {
 
 
     /**
-     * 即使加了cascade ，可以保存resources的数据
+     * 加了cascade ，可以保存resources的数据
      * 但关联表 actor_resources 由mappedBy控制，所以没有保存数据
      */
     @Test
