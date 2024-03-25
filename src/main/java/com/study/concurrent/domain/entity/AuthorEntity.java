@@ -2,7 +2,6 @@ package com.study.concurrent.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Comment;
 
 import java.util.Set;
