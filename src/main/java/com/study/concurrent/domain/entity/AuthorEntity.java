@@ -28,7 +28,7 @@ public class AuthorEntity {
 
     @OneToMany(mappedBy = "authorEntity")
     @ToString.Exclude
-    @BatchSize(size = 25)
+//    @BatchSize(size = 25)
     private Set<EbookEntity> ebookEntitySet;
 
 
