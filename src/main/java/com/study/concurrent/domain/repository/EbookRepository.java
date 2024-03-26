@@ -19,4 +19,9 @@ public interface EbookRepository extends JpaRepository<EbookEntity, Long> {
             select e from EbookEntity e where e.name like %:name%""")
     List<EbookEntity> likeBooks(String name);
 
+    @Query(value = """
+            select e from EbookEntity e left join fetch e.authorEntity
+            """)
+    List<EbookEntity> findAllBook();
+
 }

@@ -170,4 +170,13 @@ public class JpaTest {
             log.info("EbookEntitySet" + authorEntity.getEbookEntitySet());
         }
     }
+
+
+    @Test
+    void query_book_all_test() {
+        List<EbookEntity> allBook = ebookRepository.findAllBook();
+        for (EbookEntity ebookEntity : allBook) {
+            log.info("getAuthorEntity" + ebookEntity.getAuthorEntity());
+        }
+    }
 }
