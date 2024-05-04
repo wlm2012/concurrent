@@ -19,14 +19,14 @@ configurations {
     }
 }
 
-repositories {
-    mavenCentral()
-}
+
+extra["springAiVersion"] = "0.8.1"
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.ai:spring-ai-openai-spring-boot-starter")
     compileOnly("org.projectlombok:lombok:1.18.30")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
@@ -42,8 +42,15 @@ dependencies {
     implementation("org.jooq:jool:0.9.15")
 
 
+
     testCompileOnly("org.projectlombok:lombok:1.18.30")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.30")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.ai:spring-ai-bom:${property("springAiVersion")}")
+    }
 }
 
 tasks.withType<Test> {
@@ -67,5 +74,6 @@ repositories {
     }
     mavenLocal()
     mavenCentral()
+    maven { url = uri("https://repo.spring.io/milestone") }
 }
 

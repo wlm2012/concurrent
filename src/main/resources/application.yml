@@ -12,6 +12,10 @@ spring:
       hibernate:
         format_sql: true
         default_batch_fetch_size: 1000
+  ai:
+    openai:
+      api-key: ENC(Ypr6kFFRWfH5ra+tAImRorORqshHWbJOpkdh8XSXQ+UyXoc7oI6c47S78EHt9Ve8vcCID4zPQaBLHzprutyO9xy0EJ6OjaHmomPdOVEC1oMdaw69/JwVzgJZaUYDJaik)
+      base-url: https://api.chatanywhere.com.cn
 
 server:
   port: 9904
