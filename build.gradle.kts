@@ -39,20 +39,16 @@ allprojects {
         mavenCentral()
         maven { url = uri("https://repo.spring.io/milestone") }
     }
+    tasks.bootJar {
+        mainClass = "com.study.concurrent.ConcurrentApplication"
+    }
 
     springBoot {
         mainClass = "com.study.concurrent.ConcurrentApplication"
     }
-
-    tasks.bootJar { enabled = true }
 }
 
 subprojects {
-    apply(plugin = "java")
-    apply(plugin = "java-library")
-    apply(plugin = "org.springframework.boot")
-    apply(plugin = "io.spring.dependency-management")
-
     dependencies {
         implementation("org.springframework.boot:spring-boot-starter-actuator")
         implementation("org.springframework.boot:spring-boot-starter-data-jpa")
@@ -86,5 +82,16 @@ subprojects {
             mavenBom("org.springframework.ai:spring-ai-bom:${property("springAiVersion")}")
         }
     }
+
+    if (project.name != "adapter") {
+        tasks.bootJar {
+            enabled = false
+        }
+    }
+
+    tasks.jar {
+        enabled = true
+    }
+
 }
 
