@@ -1,7 +1,7 @@
 package com.study.concurrent.application.service.impl;
 
+import com.study.concurrent.CommonDO.exception.ServiceException;
 import com.study.concurrent.application.service.QueryService;
-import com.study.concurrent.common.exception.ServiceException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

@@ -1,5 +1,6 @@
 plugins {
     java
+    `java-library`
     id("org.springframework.boot") version "3.2.5"
     id("io.spring.dependency-management") version "1.1.4"
 //    id("org.graalvm.buildtools.native") version "0.9.28"
@@ -8,6 +9,7 @@ plugins {
 
 allprojects {
     apply(plugin = "java")
+    apply(plugin = "java-library")
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
 
@@ -37,10 +39,17 @@ allprojects {
         mavenCentral()
         maven { url = uri("https://repo.spring.io/milestone") }
     }
+
+    springBoot {
+        mainClass = "com.study.concurrent.ConcurrentApplication"
+    }
+
+    tasks.bootJar { enabled = true }
 }
 
 subprojects {
     apply(plugin = "java")
+    apply(plugin = "java-library")
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
 
