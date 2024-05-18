@@ -1,11 +1,11 @@
-package com.study.concurrent.adapter.dto;
+package com.study.concurrent.application.dto.request;
 
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class IdsDO {
+public class IdsRequest {
 
     private List<Long> ids;
 }

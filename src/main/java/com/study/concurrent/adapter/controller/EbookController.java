@@ -1,6 +1,6 @@
 package com.study.concurrent.adapter.controller;
 
-import com.study.concurrent.adapter.dto.IdsDO;
+import com.study.concurrent.application.dto.request.IdsRequest;
 import com.study.concurrent.application.service.impl.EbookServiceImpl;
 import com.study.concurrent.domain.entity.EbookEntity;
 import lombok.RequiredArgsConstructor;
@@ -20,11 +20,11 @@ public class EbookController {
     private final EbookServiceImpl ebookService;
 
     @GetMapping("/findByIds")
-    public List<EbookEntity> findByIds(IdsDO idsDO) {
-        log.info(Thread.currentThread().isVirtual() + Thread.currentThread().getName());
+    public List<EbookEntity> findByIds(IdsRequest idsRequest) {
+        log.info("{}{}", Thread.currentThread().isVirtual(), Thread.currentThread().getName());
         log.info(Thread.currentThread().toString());
 
         ebookService.asyncFindByIds();
-        return ebookService.findByIds(idsDO.getIds());
+        return ebookService.findByIds(idsRequest.getIds());
     }
 }
