@@ -1,9 +1,9 @@
 package com.study.concurrent.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.study.concurrent.common.exception.ServiceException;
-import com.study.concurrent.common.resp.CommonPageResp;
-import com.study.concurrent.common.resp.CommonResp;
+import com.study.concurrent.CommonDO.exception.ServiceException;
+import com.study.concurrent.CommonDO.resp.CommonPageResp;
+import com.study.concurrent.CommonDO.resp.CommonResp;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;

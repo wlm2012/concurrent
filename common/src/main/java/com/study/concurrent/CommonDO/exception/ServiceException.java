@@ -1,4 +1,4 @@
-package com.study.concurrent.common.exception;
+package com.study.concurrent.CommonDO.exception;
 
 public final class ServiceException extends RuntimeException {
 

@@ -9,3 +9,9 @@ pluginManagement {
         }
     }
 }
+
+include("adapter")
+include("application")
+include("common")
+include("domain")
+include("infrastructure")

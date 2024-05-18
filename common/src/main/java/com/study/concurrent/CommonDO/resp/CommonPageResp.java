@@ -1,4 +1,4 @@
-package com.study.concurrent.common.resp;
+package com.study.concurrent.CommonDO.resp;
 
 import lombok.Data;
 import org.springframework.data.domain.Page;
