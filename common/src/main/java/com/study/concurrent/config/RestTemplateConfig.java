@@ -21,14 +21,16 @@ public class RestTemplateConfig {
 
     private static final int HTTP_MAX_IDLE = 100;
     private static final int HTTP_KEEP_ALIVE = 20;
-    private static final int HTTP_TIMEOUT = 60;
+    private static final int HTTP_TIMEOUT_MILLISECONDS = 60_000;
+
+    private static final int HTTP_TIMEOUT =60;
     private static final int HTTP_CONNECTION_TIMEOUT = 30;
 
     @Bean
     public RestTemplate restTemplate() {
         SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
-        requestFactory.setReadTimeout(HTTP_TIMEOUT);
-        requestFactory.setConnectTimeout(HTTP_TIMEOUT);
+        requestFactory.setReadTimeout(HTTP_TIMEOUT_MILLISECONDS);
+        requestFactory.setConnectTimeout(HTTP_TIMEOUT_MILLISECONDS);
         return new RestTemplate(requestFactory);
     }
 

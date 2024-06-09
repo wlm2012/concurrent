@@ -7,22 +7,20 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
-
 /**
  * Description.
- *
  */
 @Disabled
 @SpringBootTest
 public class DemoTest {
 
     @Resource
-    StringEncryptor encryptor;
+    private StringEncryptor encryptor;
 
     @Test
 //    @Disabled
     public void encrypt() {
-        String url = encryptor.encrypt("jdbc:postgresql:");
+        String url = encryptor.encrypt("Edf9cFsnGovin6cV");
 
         System.out.println("url = " + url);
     }

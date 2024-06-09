@@ -57,6 +57,7 @@ subprojects {
         compileOnly("org.projectlombok:lombok:1.18.30")
         developmentOnly("org.springframework.boot:spring-boot-devtools")
         runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
+        runtimeOnly("com.mysql:mysql-connector-j")
         runtimeOnly("org.postgresql:postgresql")
         annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
         annotationProcessor("org.projectlombok:lombok:1.18.30")
