@@ -1,4 +1,4 @@
-package com.study.concurrent.client;
+package com.study.concurrent.client.wenXin;
 
 import com.study.concurrent.dto.request.WenXinRequest;
 import com.study.concurrent.dto.response.WenXinResponse;

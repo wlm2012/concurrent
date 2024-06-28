@@ -1,7 +1,7 @@
 package com.study.concurrent.application.service.impl;
 
-import com.study.concurrent.client.WenXinClient;
-import com.study.concurrent.client.WenXinTokenClient;
+import com.study.concurrent.client.wenXin.WenXinClient;
+import com.study.concurrent.client.wenXin.WenXinTokenClient;
 import com.study.concurrent.dto.request.WenXinRequest;
 import com.study.concurrent.dto.response.WenXinResponse;
 import lombok.RequiredArgsConstructor;

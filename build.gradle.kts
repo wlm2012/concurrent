@@ -1,8 +1,8 @@
 plugins {
     java
     `java-library`
-    id("org.springframework.boot") version "3.2.5"
-    id("io.spring.dependency-management") version "1.1.4"
+    id("org.springframework.boot") version "3.3.1"
+    id("io.spring.dependency-management") version "1.1.5"
 //    id("org.graalvm.buildtools.native") version "0.9.28"
 }
 
@@ -54,6 +54,7 @@ subprojects {
         implementation("org.springframework.boot:spring-boot-starter-data-jpa")
         implementation("org.springframework.boot:spring-boot-starter-web")
         implementation("org.springframework.ai:spring-ai-openai-spring-boot-starter")
+        implementation("org.springframework.boot:spring-boot-starter-websocket")
         compileOnly("org.projectlombok:lombok:1.18.30")
         developmentOnly("org.springframework.boot:spring-boot-devtools")
         runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
