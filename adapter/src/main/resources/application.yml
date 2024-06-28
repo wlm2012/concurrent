@@ -32,4 +32,5 @@ wenxin:
   tokenUrl: https://aip.baidubce.com/oauth/2.0/token
   apiKey: ENC(OG/6PE0XqkfqRKnTCVbimBcHhfJWmGs7gJvxX0mnL/nN4PcFoiK9jhm3y3phhmkJoaJ5k/x4HLR0lkCnTii6zA==)
   secretKey: ENC(02QEmmLqfsc8IoY5glhMg13xVKLyvagGB3k2MZ3LRN9MRXTVJr4KIQjKCYsVXtc7XOpn4Gy2jowrdJ6xuqN7CHQ1g1WmDAHES8x8E9OBPI8=)
-  wenXinUrl: https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/ernie-speed-128k
+  wenXinErnieSpeed128kUrl: https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/ernie-speed-128k
+  wenXinErnieSpeedUrl: https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/ernie_speed

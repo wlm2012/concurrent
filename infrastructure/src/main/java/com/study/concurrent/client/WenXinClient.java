@@ -14,11 +14,14 @@ public class WenXinClient {
 
     private final RestTemplate httpRestTemplate;
 
-    @Value("${wenxin.wenXinUrl}")
-    private String wenXinUrl;
+    @Value("${wenxin.wenXinErnieSpeed128kUrl}")
+    private String wenXinSpeed128kUrl;
+
+    @Value("${wenxin.wenXinErnieSpeedUrl}")
+    private String wenXinSpeedUrl;
 
     public WenXinResponse getWenXin(WenXinRequest wenXinRequest,String accessToken) {
-        String url = wenXinUrl + "?access_token=" + accessToken;
+        String url = wenXinSpeed128kUrl + "?access_token=" + accessToken;
         ResponseEntity<WenXinResponse> responseEntity = httpRestTemplate.postForEntity(url, wenXinRequest, WenXinResponse.class);
         return responseEntity.getBody();
     }
