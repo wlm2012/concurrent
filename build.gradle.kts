@@ -31,8 +31,6 @@ allprojects {
         // 依赖使用阿里云 maven 源
         maven {
             setUrl("https://maven.aliyun.com/repository/public/")
-        }
-        maven {
             setUrl("https://maven.aliyun.com/repository/spring/")
         }
         mavenLocal()
@@ -54,6 +52,7 @@ subprojects {
         implementation("org.springframework.boot:spring-boot-starter-data-jpa")
         implementation("org.springframework.boot:spring-boot-starter-web")
         implementation("org.springframework.ai:spring-ai-openai-spring-boot-starter")
+//        implementation("org.springframework.ai:spring-ai-vertex-ai-gemini-spring-boot-starter")
         implementation("org.springframework.boot:spring-boot-starter-websocket")
         compileOnly("org.projectlombok:lombok:1.18.30")
         developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -78,7 +77,7 @@ subprojects {
         useJUnitPlatform()
     }
 
-    extra["springAiVersion"] = "0.8.1"
+    extra["springAiVersion"] = "1.0.0-M1"
     dependencyManagement {
         imports {
             mavenBom("org.springframework.ai:spring-ai-bom:${property("springAiVersion")}")

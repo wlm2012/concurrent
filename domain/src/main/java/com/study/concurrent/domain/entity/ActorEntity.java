@@ -3,7 +3,9 @@ package com.study.concurrent.domain.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
+import org.hibernate.annotations.SQLRestriction;
 
+import java.util.List;
 import java.util.Set;
 
 
@@ -12,6 +14,7 @@ import java.util.Set;
 @Comment("演员")
 @Getter
 @Setter
+@Builder
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
@@ -51,10 +54,13 @@ public class ActorEntity {
     @Column(length = 1)
     private int exist;
 
-    @Comment("照片")
-    @Lob
-    @Column(length = 160000)
-    private byte[] photo;
+    @ElementCollection
+    @SQLRestriction("photo_type='1'")
+    @CollectionTable(name = "photo",
+            joinColumns = {@JoinColumn(name = "ref_id", referencedColumnName = "id",
+                    foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
+            })
+    private List<ActorPhotoCollection> photos;
 
     @ManyToMany(mappedBy = "actorSet"
 //            , cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}

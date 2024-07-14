@@ -1,5 +1,7 @@
 package com.study.concurrent.jpa;
 
+import com.study.concurrent.application.dto.request.ActorAddRequest;
+import com.study.concurrent.application.service.impl.ActorServiceImpl;
 import com.study.concurrent.domain.entity.ActorEntity;
 import com.study.concurrent.domain.entity.AuthorEntity;
 import com.study.concurrent.domain.entity.EbookEntity;
@@ -14,6 +16,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +28,9 @@ public class JpaTest {
 
     @Resource
     private ActorRepository actorRepository;
+
+    @Resource
+    private ActorServiceImpl actorService;
 
     @Resource
     private ResourcesRepository resourcesRepository;
@@ -47,8 +54,9 @@ public class JpaTest {
         // 如果没有这一步，则无法保存 resources
         resourcesRepository.save(resourcesEntity);
 
-        ActorEntity actorEntity = new ActorEntity();
-        actorEntity.setName("cang");
+        ActorEntity actorEntity = ActorEntity.builder()
+                .name("cang")
+                .build();
 
         HashSet<ResourcesEntity> resourcesEntitySet = new HashSet<>();
         resourcesEntitySet.add(resourcesEntity);
@@ -178,5 +186,27 @@ public class JpaTest {
         for (EbookEntity ebookEntity : allBook) {
             log.info("getAuthorEntity" + ebookEntity.getAuthorEntity());
         }
+    }
+
+
+    @Test
+    void save_photo() {
+
+        List<byte[]> photos = new ArrayList<>();
+        photos.add("1234".getBytes(StandardCharsets.UTF_8));
+        photos.add("12345".getBytes(StandardCharsets.UTF_8));
+
+        ActorAddRequest build = ActorAddRequest.builder()
+                .name("123")
+                .photos(photos)
+                .build();
+        actorService.save(build);
+    }
+
+    @Test
+    @Transactional(readOnly = true)
+    void query_name(){
+        ActorEntity actorEntity = actorService.queryByName("123");
+        log.info("actorEntity:" + actorEntity);
     }
 }

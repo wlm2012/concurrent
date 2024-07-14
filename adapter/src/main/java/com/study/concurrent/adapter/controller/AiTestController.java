@@ -22,7 +22,8 @@ public class AiTestController {
 
     @GetMapping(value = "/test", produces = MediaType.APPLICATION_JSON_VALUE)
     public String test(String input) {
-        return aiService.test(input);
+//        return aiService.test(input);
+        return null;
     }
 
     @PostMapping("/wenXin")
