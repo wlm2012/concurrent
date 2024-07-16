@@ -2,13 +2,11 @@ package com.study.concurrent.application.service.impl;
 
 import com.study.concurrent.application.dto.request.ActorAddRequest;
 import com.study.concurrent.domain.entity.ActorEntity;
-import com.study.concurrent.domain.entity.ActorPhotoCollection;
 import com.study.concurrent.domain.repository.ActorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -18,17 +16,12 @@ public class ActorServiceImpl {
 
     public void save(ActorAddRequest actorAddRequest) {
 
-        List<byte[]> photos = actorAddRequest.getPhotos();
-        ArrayList<ActorPhotoCollection> photoCollections = new ArrayList<>();
-        photos.forEach(e -> photoCollections.add(ActorPhotoCollection.builder()
-                .photos(e)
-                .build()));
+        Set<byte[]> photos = actorAddRequest.getPhotos();
 
         ActorEntity actorEntity = ActorEntity.builder()
                 .name(actorAddRequest.getName())
-                .photos(photoCollections)
+                .photos(photos)
                 .build();
-
         actorRepository.save(actorEntity);
     }
 

@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder
@@ -15,5 +15,5 @@ public class ActorAddRequest {
 
     private String name;
 
-    private List<byte[]> photos;
+    private Set<byte[]> photos;
 }

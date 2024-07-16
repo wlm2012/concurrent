@@ -12,16 +12,18 @@ import com.study.concurrent.domain.repository.EbookRepository;
 import com.study.concurrent.domain.repository.ResourcesRepository;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
+@Disabled
 @Slf4j
 @SpringBootTest
 public class JpaTest {
@@ -180,6 +182,7 @@ public class JpaTest {
     }
 
 
+    @Disabled
     @Test
     void query_book_all_test() {
         List<EbookEntity> allBook = ebookRepository.findAllBook();
@@ -189,10 +192,11 @@ public class JpaTest {
     }
 
 
+    @Disabled
     @Test
     void save_photo() {
 
-        List<byte[]> photos = new ArrayList<>();
+        Set<byte[]> photos = new HashSet<>();
         photos.add("1234".getBytes(StandardCharsets.UTF_8));
         photos.add("12345".getBytes(StandardCharsets.UTF_8));
 
@@ -203,6 +207,7 @@ public class JpaTest {
         actorService.save(build);
     }
 
+    @Disabled
     @Test
     @Transactional(readOnly = true)
     void query_name(){

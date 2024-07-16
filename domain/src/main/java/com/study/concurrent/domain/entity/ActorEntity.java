@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 import org.hibernate.annotations.SQLRestriction;
+import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -60,7 +62,33 @@ public class ActorEntity {
             joinColumns = {@JoinColumn(name = "ref_id", referencedColumnName = "id",
                     foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
             })
-    private List<ActorPhotoCollection> photos;
+    private List<PhotoCollection> photos;
+
+    public void setPhotos(Set<byte[]> photos) {
+        if (CollectionUtils.isEmpty(photos)) {
+            return;
+        }
+        ArrayList<PhotoCollection> photoCollections = new ArrayList<>();
+        photos.forEach(e -> photoCollections.add(PhotoCollection.builder()
+                .photos(e)
+                .build()));
+        this.photos = photoCollections;
+    }
+
+    public static class ActorEntityBuilder {
+        public ActorEntityBuilder photos(Set<byte[]> photos) {
+            if (CollectionUtils.isEmpty(photos)) {
+                return this;
+            }
+
+            ArrayList<PhotoCollection> photoCollections = new ArrayList<>();
+            photos.forEach(e -> photoCollections.add(PhotoCollection.builder()
+                    .photos(e)
+                    .build()));
+            this.photos = photoCollections;
+            return this;
+        }
+    }
 
     @ManyToMany(mappedBy = "actorSet"
 //            , cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}
