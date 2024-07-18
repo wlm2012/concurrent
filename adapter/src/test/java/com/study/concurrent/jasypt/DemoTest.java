@@ -18,10 +18,17 @@ public class DemoTest {
     private StringEncryptor encryptor;
 
     @Test
-//    @Disabled
     public void encrypt() {
-        String url = encryptor.encrypt("Edf9cFsnGovin6cV");
+        String url = encryptor.encrypt("url");
 
         System.out.println("url = " + url);
+
+        String userName = encryptor.encrypt("url");
+
+        System.out.println("userName = " + userName);
+
+        String password = encryptor.encrypt("url");
+
+        System.out.println("password = " + password);
     }
 }
