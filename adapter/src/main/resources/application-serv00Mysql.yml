@@ -10,4 +10,6 @@ spring:
 
 server:
   port: 38012
-
+  tomcat:
+    threads:
+      max: 5
