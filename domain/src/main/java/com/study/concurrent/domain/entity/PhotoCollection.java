@@ -2,6 +2,7 @@ package com.study.concurrent.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.Lob;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 
@@ -19,8 +20,9 @@ public class PhotoCollection {
     private String photoType;
 
 
+    @Lob
     @Comment("图片")
-    @Column(length = 160000)
+    @Column(columnDefinition = "mediumblob")
     private byte[] photos;
 
 

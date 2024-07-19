@@ -7,11 +7,12 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     properties:
       hibernate:
         format_sql: true
         default_batch_fetch_size: 1000
+    open-in-view: false
   ai:
     openai:
       api-key: ENC(Ypr6kFFRWfH5ra+tAImRorORqshHWbJOpkdh8XSXQ+UyXoc7oI6c47S78EHt9Ve8vcCID4zPQaBLHzprutyO9xy0EJ6OjaHmomPdOVEC1oMdaw69/JwVzgJZaUYDJaik)

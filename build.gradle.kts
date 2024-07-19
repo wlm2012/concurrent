@@ -3,6 +3,7 @@ plugins {
     `java-library`
     id("org.springframework.boot") version "3.3.1"
     id("io.spring.dependency-management") version "1.1.5"
+//    id("org.springframework.boot.experimental.thin-launcher") version "1.0.31.RELEASE"
 //    id("org.graalvm.buildtools.native") version "0.9.28"
 }
 
@@ -12,6 +13,7 @@ allprojects {
     apply(plugin = "java-library")
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
+//    apply(plugin = "org.springframework.boot.experimental.thin-launcher")
 
     configurations {
         compileOnly {
@@ -48,7 +50,7 @@ allprojects {
 
 subprojects {
     dependencies {
-        implementation("org.springframework.boot:spring-boot-starter-actuator")
+//        implementation("org.springframework.boot:spring-boot-starter-actuator")
         implementation("org.springframework.boot:spring-boot-starter-data-jpa")
         implementation("org.springframework.boot:spring-boot-starter-web")
         implementation("org.springframework.ai:spring-ai-openai-spring-boot-starter")
@@ -56,13 +58,13 @@ subprojects {
         implementation("org.springframework.boot:spring-boot-starter-websocket")
         compileOnly("org.projectlombok:lombok:1.18.30")
         developmentOnly("org.springframework.boot:spring-boot-devtools")
-        runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
+//        runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
         runtimeOnly("com.mysql:mysql-connector-j")
-        runtimeOnly("org.postgresql:postgresql")
-        annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+//        runtimeOnly("org.postgresql:postgresql")
+//        annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
         annotationProcessor("org.projectlombok:lombok:1.18.30")
         testImplementation("org.springframework.boot:spring-boot-starter-test")
-        implementation(kotlin("script-runtime"))
+//        implementation(kotlin("script-runtime"))
         implementation("com.lmax:disruptor:4.0.0")
         implementation("org.jsoup:jsoup:1.17.2")
         implementation("org.apache.httpcomponents.client5:httpclient5:5.3")
@@ -94,5 +96,17 @@ subprojects {
         enabled = true
     }
 
+
+
+    /*    buildscript {
+            repositories {
+                maven {
+                    url = uri("https://plugins.gradle.org/m2/")
+                }
+            }
+            dependencies {
+                classpath("org.springframework.boot.experimental:spring-boot-thin-gradle-plugin:1.0.31.RELEASE")
+            }
+        }*/
 }
 
